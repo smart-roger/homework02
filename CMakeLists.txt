@@ -1,13 +1,8 @@
 ﻿cmake_minimum_required(VERSION 3.2)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
-set(Boost_USE_STATIC_LIBS ON) 
-set(BOOST_TEST_LOG_LEVEL all)
 project(ip_filter VERSION 0.0.1)
 
-find_package(Boost 1.65.1 COMPONENTS unit_test_framework REQUIRED)
-
-#configure_file(version.h.in version.h)
+find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
 add_executable(ip_filter main.cpp)
 
@@ -21,7 +16,6 @@ set_target_properties(ip_filter split PROPERTIES
 	CXX_STANDARD 14
 	CXX_STANDARD_REQUIRED ON
 	COMPILE_OPTIONS -Wpedantic -Wall -Wextra
-	COMPILE_FLAGS -std=c++1z
 )
 
 set_target_properties(test_split PROPERTIES
