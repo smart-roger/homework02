@@ -19,7 +19,7 @@ set_target_properties(ip_filter split test_split ip PROPERTIES
 )
 
 set_target_properties(test_split PROPERTIES
-	#COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
+	COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
 	INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
 )
 
