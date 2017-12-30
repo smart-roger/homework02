@@ -12,7 +12,7 @@ add_library(ip ip.cpp)
 
 add_executable(test_split test_split.cpp)
 
-set_target_properties(ip_filter split PROPERTIES
+set_target_properties(ip_filter split test_split ip PROPERTIES
 	CXX_STANDARD 14
 	CXX_STANDARD_REQUIRED ON
 	COMPILE_OPTIONS -Wpedantic -Wall -Wextra
