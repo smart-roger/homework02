@@ -28,10 +28,10 @@ void print_ip (const tupleIp& ip){
 							<< std::to_string(std::get<2>(ip)) << "." 
 							<< std::to_string(std::get<3>(ip))
 				<< std::endl;
-};
+}
 
 void print_pool (const std::vector<tupleIp>& poll_out){
             for(auto ip : poll_out)
                 print_ip(ip);
-        };
+}
 

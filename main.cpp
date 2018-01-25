@@ -24,11 +24,7 @@ int main(int argc, char const *argv[])
 		}
 
         //reverse lexicographically sort
-        std::sort (ip_pool.rbegin(), ip_pool.rend(),
-			//	Функтор для сортировки
-			[](const tupleIp& left, const tupleIp& right){
-				return left < right;
-			});        
+        std::sort (ip_pool.begin(), ip_pool.end(), std::greater<tupleIp> ());
         print_pool(ip_pool);
 
 		//Фильтруем по значению первого байта

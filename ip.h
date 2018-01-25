@@ -39,22 +39,9 @@ vecIp filter_any(const vecIp& input, const T&& byte){
 
 //	Окончание для рекурсии variadic template
 //	N - номер анализируемого байта 
-template<int N=0, typename T>
-std::vector<tupleIp> filter (vecIp& input, const T&& final_byte){
-	//	Проверим, что не выползли за пределы кортежа
-	static_assert (N>=0 && N<NUM_IP_PARTS, "Wrong byye number (N) in filter!");
-	//	Хранение результата
-	vecIp filterResult;	
-	//	Заносим в результат подходящие значение
-	std::copy_if(input.begin(), input.end(),
-				back_inserter(filterResult), 
-				//	Проверяем совпадение байта. номер элемента в кортеже берётся из параметра шаблона
-				[final_byte](const tupleIp& test_value){
-					return (std::get<N>(test_value) == final_byte);
-				}
-	);
-	//	Возвращаем результат
-	return filterResult;
+template<int N=0>
+std::vector<tupleIp> filter (vecIp& input){
+	return input;
 }
 //	Основной код для фильтрации по байтам
 //	N - номер анализируемого байта 
