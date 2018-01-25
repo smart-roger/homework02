@@ -1,24 +1,24 @@
-#include "ip.h"
+п»ї#include "ip.h"
 tupleIp parseIp(std::vector<std::string>&& vsIp){
 		
-	//	Проверим размер входного массива
+	//	РџСЂРѕРІРµСЂРёРј СЂР°Р·РјРµСЂ РІС…РѕРґРЅРѕРіРѕ РјР°СЃСЃРёРІР°
 	if (NUM_IP_PARTS!=vsIp.size()){		
 		throw std::logic_error("IP address should consist of "+std::to_string(NUM_IP_PARTS)+" parts");
 	};
 	
-	//	Создадим массив чисел для преобразования строк в число
+	//	РЎРѕР·РґР°РґРёРј РјР°СЃСЃРёРІ С‡РёСЃРµР» РґР»СЏ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ СЃС‚СЂРѕРє РІ С‡РёСЃР»Рѕ
 	std::array<unsigned char, NUM_IP_PARTS> ip_parts;
 	for (unsigned char index=0; index < NUM_IP_PARTS; ++index){
 		if(vsIp.at(index).empty()) 
 			throw std::logic_error("Empty byte string received!");
-		//	Проверим, что переданы корректные значения байтов
+		//	РџСЂРѕРІРµСЂРёРј, С‡С‚Рѕ РїРµСЂРµРґР°РЅС‹ РєРѕСЂСЂРµРєС‚РЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ Р±Р°Р№С‚РѕРІ
 		auto val = stoi(vsIp.at(index));
 		if( (255<val) or (0 > val))
 			throw std::logic_error("byte should have value 0...255 " + std::to_string(val) + "received");
 		ip_parts[index] = static_cast<unsigned char> (val);
 	}
 	
-	//	Преобразуем массив в кортеж
+	//	РџСЂРµРѕР±СЂР°Р·СѓРµРј РјР°СЃСЃРёРІ РІ РєРѕСЂС‚РµР¶
 	return std::make_tuple(ip_parts[0], ip_parts[1],ip_parts[2],ip_parts[3]);
 }
 
